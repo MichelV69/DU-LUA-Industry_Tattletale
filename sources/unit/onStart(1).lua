@@ -2,8 +2,8 @@
 wss_software ={}
 wss_software.id = "industry_tattletale"
 wss_software.title = "Industry Tattletale"
-wss_software.version = "1.0.0"
-wss_software.revision = "08 feb 2023 11h54 AST"
+wss_software.version = "1.0.1"
+wss_software.revision = "09 feb 2023 10h38 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -27,11 +27,6 @@ statusCodeTable[4] = {state="Storage Full"}
 statusCodeTable[5] = {state="No Output"}
 statusCodeTable[6] = {state="Running"}
 statusCodeTable[7] = {state="No Schemas"}
-
-statusMessageTable = {}
-statusMessageTable["XFRUL_Status"] = "Booting"
-statusMessageTable["XFR_Data"] = {material="Unknown", quantity=-1}
-statusMessageTable["comment"] = "Booting"
 
 screenPulseTable = {}
 screenPulseTable[1]  = "[-=+     ]"
