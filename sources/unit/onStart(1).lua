@@ -3,7 +3,7 @@ wss_software ={}
 wss_software.id = "industry_tattletale"
 wss_software.title = "Industry Tattletale"
 wss_software.version = "1.0.2"
-wss_software.revision = "10 feb 2023 17h32 AST"
+wss_software.revision = "10 feb 2023 17h47 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -47,10 +47,16 @@ screenPulseTable[15] = "[=-+     ]"
 animationPulseIndex = 1
 
 ---
+local lclFontName= "Montserrat-Light" --export
+FontName=[["]].. lclFontName ..[["]]
+FontSize= 20 --export
+
+---
 local possibleScreens = {Screen1, Screen2, Screen3, Screen4, Screen5}
 local possibleIndustries = {Industry1, Industry2, Industry3, Industry4, Industry5}
 ScreenList = {}
 IndustryList = {}
+industryStatusData = {}
 
 for i = 1, 5, 1 do
     if possibleScreens[i] ~= nil then
@@ -74,6 +80,6 @@ for i = 1, #ScreenList, 1 do
     ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
-local industryStatusData = UpdateIndustry(IndustryList)
+industryStatusData = UpdateIndustry(IndustryList)
 UpdateScreens(ScreenList, IndustryStatusData)
 --- eof ---

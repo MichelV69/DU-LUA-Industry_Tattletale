@@ -23,7 +23,7 @@ function renderScreen(screenObject)
         layers["report_text"] = createLayer()
         layers["footer_text"] = createLayer()
         layers["header_text"] = createLayer()
-        
+
         --util functions
         function tidy(valueToRound)
         precisionDigits = 2
@@ -32,29 +32,29 @@ function renderScreen(screenObject)
         local roundedValue = (math.floor(valueToRound * precisionValue) / precisionValue)
         return roundedValue
         end
-        
+
         function getRowColsPosition(layout, col, row)
         if col > layout.cols_wide then col = layout.cols_wide end
         x_pos = (layout.col_width * col) + layout.margin_left
         if row > layout.rows_high then row = layout.rows_high end
         y_pos = (layout.row_height * row) + layout.margin_top
         return {x_pos = x_pos, y_pos = y_pos}
-        end 
-            
+        end
+
         --Scr Resolution
         local rx, ry=getResolution()
         local layout = {}
         layout.cols_wide = tidy(rx/(FontSize*1.2))
         layout.col_width = tidy(rx/layout.cols_wide)
-        
+
         layout.rows_high = tidy(ry/(FontSize*1.2))
         layout.row_height = tidy(ry/layout.rows_high)
-        
+
         layout.margin_top = tidy((ry * 0.1) / 2)
         layout.margin_bottom = layout.margin_top
         layout.margin_left = tidy((rx * 0.1) / 2)
         layout.margin_right = layout.margin_left
-        
+
         --Font Setups
         local offsetStepPX = 24
         local fontSizeStep = 2
@@ -69,7 +69,7 @@ function renderScreen(screenObject)
         local input=json.decode(getInput()) or {}
         local tidyInBinContents=input	
     ]]
-    
+
     -- header and footer (4)
     ScreenTable[4]=[[
       local vpos = 1
