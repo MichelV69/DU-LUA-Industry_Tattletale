@@ -71,3 +71,6 @@ for i = 1, #ScreenList, 1 do
     ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
+IndustryStatusData = UpdateIndustry(IndustryList)
+UpdateScreens(ScreenList, IndustryList)
+--- eof ---
