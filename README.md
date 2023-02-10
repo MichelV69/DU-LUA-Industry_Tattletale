@@ -7,7 +7,9 @@ Provide at-a-glance information about the status of running machinery in small i
 ## Requirements
 
 1 x Programming Board XS
+
 1 .. 5 x Screen Unit (any size, personal taste)
+
 1 .. 5 x Industry Unit
 
 ## Installation

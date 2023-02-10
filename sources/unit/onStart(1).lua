@@ -7,7 +7,7 @@ wss_software.revision = "09 feb 2023 10h38 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
-msgTitleAndVersion = wss_software.title .. "\n" .. wss_software.version
+local msgTitleAndVersion = wss_software.title .. "\n" .. wss_software.version
 system.print(msgTitleAndVersion)
 
 ---
@@ -46,9 +46,10 @@ screenPulseTable[14] = "[=+-     ]"
 screenPulseTable[15] = "[=-+     ]"
 animationPulseIndex = 1
 
-ScreenList = {}
-IndustryList = {}
-IndustryStatusData = {} --- struct = name, statusCode, workingOn, errorDetails, otherNotes
+---
+local ScreenList = {}
+local IndustryList = {}
+local industryStatusData = {} --- struct = name, statusCode, workingOn, errorDetails, otherNotes
 for i = 1, 5, 1 do
     if Screen[i] then
         ScreenList[1] = Screen[i]
@@ -71,6 +72,6 @@ for i = 1, #ScreenList, 1 do
     ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
-IndustryStatusData = UpdateIndustry(IndustryList)
-UpdateScreens(ScreenList, IndustryList)
+industryStatusData = UpdateIndustry(IndustryList)
+UpdateScreens(ScreenList, IndustryStatusData)
 --- eof ---
