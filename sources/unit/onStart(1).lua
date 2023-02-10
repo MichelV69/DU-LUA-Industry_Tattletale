@@ -47,14 +47,14 @@ screenPulseTable[15] = "[=-+     ]"
 animationPulseIndex = 1
 
 ---
-local ScreenList = {}
-local IndustryList = {}
-local industryStatusData = {} --- struct = name, statusCode, workingOn, errorDetails, otherNotes
+ScreenList = {}
+IndustryList = {}
+
 for i = 1, 5, 1 do
-    if Screen[i] then
+    if Screen[i] ~= nil then
         ScreenList[1] = Screen[i]
     end
-    if Industry[i] then
+    if Industry[i] ~= nil then
         IndustryList[1] = Industry[i]
     end
 end
@@ -72,6 +72,6 @@ for i = 1, #ScreenList, 1 do
     ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
-industryStatusData = UpdateIndustry(IndustryList)
+local industryStatusData = UpdateIndustry(IndustryList)
 UpdateScreens(ScreenList, IndustryStatusData)
 --- eof ---
