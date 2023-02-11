@@ -1,7 +1,7 @@
--- library.onStart(1)
+-- library.onStart(3)
 -- define screen layout for use elsewhere
 ---
-function renderScreen(screenObject)
+function renderScreen(screenObject, jsonData)
     local ScreenTable = {}
     --Parameters (1)
     ScreenTable[1]=[[
@@ -66,8 +66,7 @@ function renderScreen(screenObject)
     --get data to publish (3)
     ScreenTable[3]=[[
         local json=require('dkjson')
-        local input=json.decode(getInput()) or {}
-        local tidyInBinContents=input	
+        local tableData=json.decode(getInput()) or {}
     ]]
     
     -- header and footer (4)
@@ -76,7 +75,7 @@ function renderScreen(screenObject)
       publish_to = getRowColsPosition(layout, 1, vpos)
       textMessage = S_Title .. " v" .. S_Version .. " (" .. S_Revision .. ")"
       addText(layers["header_text"], FontTextSmaller, textMessage, publish_to.x_pos, publish_to.y_pos)
-      itemListShort = #tidyInBinContents
+      itemListShort = #tableData
       shortListNotice = "has "
       if itemListShort > 18 then 
         itemListShort = 18 
@@ -84,7 +83,7 @@ function renderScreen(screenObject)
         end
 
       publish_to = getRowColsPosition(layout, 1, vpos+1)
-      textMessage = "Primary container list " .. shortListNotice .. #tidyInBinContents .. " items."
+      textMessage = "Primary container list " .. shortListNotice .. #tableData .. " items."
       addText(layers["header_text"], FontTextSmaller, textMessage, publish_to.x_pos, publish_to.y_pos)
 
       col = tidy(layout.cols_wide/3)
@@ -113,11 +112,12 @@ function renderScreen(screenObject)
         ]]
 
     --RENDER
-    function ScreenRender(screenObject)
+    function ScreenRender(screenObject, jsonData)
         local screenTemplate=table.concat(ScreenTable)
+        screenObject.setScriptInput(json.encode(jsonData))
         screenObject.setRenderScript(screenTemplate)
         end
-    ScreenRender(screenObject)
+    ScreenRender(screenObject, jsonData)
     end
 ---
 --- eof ---

@@ -40,9 +40,8 @@ function UpdateIndustry(table_IndustryList)
     end --- function
   
   function UpdateScreens(lcl_ScreenList, lcl_IndustryStatusData)
-
     for i = 1, #lcl_ScreenList, 1 do
-        renderScreen(lcl_ScreenList[i])
+        renderScreen(lcl_ScreenList[i], json.encode(lcl_IndustryStatusData))
         end
     end --- function
   --- eof ---

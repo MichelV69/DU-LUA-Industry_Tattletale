@@ -2,8 +2,8 @@
 wss_software ={}
 wss_software.id = "industry_tattletale"
 wss_software.title = "Industry Tattletale"
-wss_software.version = "1.0.2"
-wss_software.revision = "10 feb 2023 17h47 AST"
+wss_software.version = "1.0.3"
+wss_software.revision = "11 feb 2023 08h55 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -54,32 +54,33 @@ FontSize= 20 --export
 ---
 local possibleScreens = {Screen1, Screen2, Screen3, Screen4, Screen5}
 local possibleIndustries = {Industry1, Industry2, Industry3, Industry4, Industry5}
-ScreenList = {}
-IndustryList = {}
+screenList = {}
+industryList = {}
 industryStatusData = {}
 
 for i = 1, 5, 1 do
     if possibleScreens[i] ~= nil then
-        ScreenList[i] = possibleScreens[i]
+        table.insert(screenList,  possibleScreens[i])
     end
     if possibleIndustries[i] ~= nil then
-        IndustryList[i] = possibleIndustries[i]
+        table.insert(industryList,  possibleIndustries[i])
     end
 end
 
-if #ScreenList == 0 then
+if #screenList == 0 then
     error "No Screen units connected.  Cannot continue."
 end
 
-if #IndustryList == 0 then
+if #industryList == 0 then
     error "No Industry units connected.  Cannot continue."
 end
 
-for i = 1, #ScreenList, 1 do
-    ScreenList[i].activate()
-    ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
+for i = 1, #screenList, 1 do
+    screenList[i].activate()
+    screenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
-industryStatusData = UpdateIndustry(IndustryList)
-UpdateScreens(ScreenList, IndustryStatusData)
+industryStatusData = UpdateIndustry(industryList)
+UpdateScreens(screenList, industryStatusData)
+unit.setTimer(wss_software.id, 0.5)
 --- eof ---
