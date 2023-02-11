@@ -3,7 +3,7 @@ wss_software ={}
 wss_software.id = "industry_tattletale"
 wss_software.title = "Industry Tattletale"
 wss_software.version = "1.0.3"
-wss_software.revision = "11 feb 2023 08h55 AST"
+wss_software.revision = "11 feb 2023 09h15 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -69,11 +69,15 @@ end
 
 if #screenList == 0 then
     error "No Screen units connected.  Cannot continue."
-end
+    else
+    system.print(wss_software.id .. ": found ["..#screenList .."] connected ScreenUnits.")
+    end
 
 if #industryList == 0 then
     error "No Industry units connected.  Cannot continue."
-end
+    else
+    system.print(wss_software.id .. ": found ["..#industryList .."] connected IndustryUnits.")
+    end
 
 for i = 1, #screenList, 1 do
     screenList[i].activate()
