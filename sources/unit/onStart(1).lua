@@ -2,8 +2,8 @@
 wss_software ={}
 wss_software.id = "industry_tattletale"
 wss_software.title = "Industry Tattletale"
-wss_software.version = "1.0.4"
-wss_software.revision = "12 feb 2023 01h23 AST"
+wss_software.version = "1.0.7"
+wss_software.revision = "12 feb 2023 22h46 AST"
 wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
