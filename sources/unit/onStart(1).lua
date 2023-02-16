@@ -1,74 +1,73 @@
 --- unit.onStart(1)
-wss_software ={}
-wss_software.id = "industry_tattletale"
-wss_software.title = "Industry Tattletale"
-wss_software.version = "1.0.0"
-wss_software.revision = "08 feb 2023 11h54 AST"
-wss_software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
+WS2_Software = {}
+WS2_Software.id = "industry_tattletale"
+WS2_Software.title = "Industry Tattletale"
+WS2_Software.version = "1.0.8"
+WS2_Software.revision = "15 feb 2023 20h58 AST"
+WS2_Software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
-msgTitleAndVersion = wss_software.title .. "\n" .. wss_software.version
+local msgTitleAndVersion = WS2_Software.title .. "\n" .. WS2_Software.version
 system.print(msgTitleAndVersion)
 
 ---
-precisionDigits = 2
-precisionValue  = 10^precisionDigits
-gramsToKG = 1000
-minutes = {}
-minutes[1] = 60
-minutes[2] = minutes[1]*2
-minutes[5] = minutes[1]*5
+PrecisionDigits          = 2
+PrecisionValue           = 10 ^ PrecisionDigits
+GramsToKG                = 1000
+Minutes                  = {}
+Minutes[1]               = 60
+Minutes[2]               = Minutes[1] * 2
+Minutes[5]               = Minutes[1] * 5
 
-statusCodeTable = {}
-statusCodeTable[1] = {state="Stopped"}
-statusCodeTable[2] = {state="Pending"}
-statusCodeTable[3] = {state="Jammed"}
-statusCodeTable[4] = {state="Storage Full"}
-statusCodeTable[5] = {state="No Output"}
-statusCodeTable[6] = {state="Running"}
-statusCodeTable[7] = {state="No Schemas"}
+ScreenPulseTable         = {}
+ScreenPulseTable[1]      = "[-=+     ]"
+ScreenPulseTable[2]      = "[ -=+    ]"
+ScreenPulseTable[3]      = "[  -=+   ]"
+ScreenPulseTable[4]      = "[   -=+  ]"
+ScreenPulseTable[5]      = "[    -=+ ]"
+ScreenPulseTable[6]      = "[     -=+]"
+ScreenPulseTable[7]      = "[     -+=]"
+ScreenPulseTable[8]      = "[     +=-]"
+ScreenPulseTable[9]      = "[    +=- ]"
+ScreenPulseTable[10]     = "[   +=-  ]"
+ScreenPulseTable[11]     = "[  +=-   ]"
+ScreenPulseTable[12]     = "[ +=-    ]"
+ScreenPulseTable[13]     = "[+=-     ]"
+ScreenPulseTable[14]     = "[=+-     ]"
+ScreenPulseTable[15]     = "[=-+     ]"
+AnimationPulseIndex      = 1
 
-statusMessageTable = {}
-statusMessageTable["XFRUL_Status"] = "Booting"
-statusMessageTable["XFR_Data"] = {material="Unknown", quantity=-1}
-statusMessageTable["comment"] = "Booting"
+---
+local lclFontName        = "Montserrat-Light" --export
+FontName                 = [["]] .. lclFontName .. [["]]
+FontSize                 = 32 --export
 
-screenPulseTable = {}
-screenPulseTable[1]  = "[-=+     ]"
-screenPulseTable[2]  = "[ -=+    ]"
-screenPulseTable[3]  = "[  -=+   ]"
-screenPulseTable[4]  = "[   -=+  ]"
-screenPulseTable[5]  = "[    -=+ ]"
-screenPulseTable[6]  = "[     -=+]"
-screenPulseTable[7]  = "[     -+=]"
-screenPulseTable[8]  = "[     +=-]"
-screenPulseTable[9]  = "[    +=- ]"
-screenPulseTable[10] = "[   +=-  ]"
-screenPulseTable[11] = "[  +=-   ]"
-screenPulseTable[12] = "[ +=-    ]"
-screenPulseTable[13] = "[+=-     ]"
-screenPulseTable[14] = "[=+-     ]"
-screenPulseTable[15] = "[=-+     ]"
-animationPulseIndex = 1
+---
+local possibleScreens    = { Screen1, Screen2, Screen3, Screen4 }
+local possibleIndustries = { Industry1, Industry2, Industry3, Industry4 }
+ScreenList               = {}
+IndustryList             = {}
+IndustryStatusData       = {}
 
-ScreenList = {}
-IndustryList = {}
-IndustryStatusData = {} --- struct = name, statusCode, workingOn, errorDetails, otherNotes
 for i = 1, 5, 1 do
-    if Screen[i] then
-        ScreenList[1] = Screen[i]
+    if possibleScreens[i] ~= nil then
+        table.insert(ScreenList, possibleScreens[i])
     end
-    if Industry[i] then
-        IndustryList[1] = Industry[i]
+    if possibleIndustries[i] ~= nil then
+        table.insert(IndustryList, possibleIndustries[i])
     end
 end
 
 if #ScreenList == 0 then
     error "No Screen units connected.  Cannot continue."
+else
+    system.print(WS2_Software.id .. ": found [" .. #ScreenList .. "] connected ScreenUnits.")
 end
 
 if #IndustryList == 0 then
     error "No Industry units connected.  Cannot continue."
+else
+    system.print(WS2_Software.id .. ": found [" .. #IndustryList .. "] connected IndustryUnits.")
 end
 
 for i = 1, #ScreenList, 1 do
@@ -76,3 +75,7 @@ for i = 1, #ScreenList, 1 do
     ScreenList[i].setCenteredText(msgTitleAndVersion .. "\n\n BOOTING")
 end
 
+IndustryStatusData = UpdateIndustry(IndustryList)
+UpdateScreens(ScreenList, IndustryStatusData)
+unit.setTimer(WS2_Software.id, 0.5)
+--- eof ---
