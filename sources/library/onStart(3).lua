@@ -77,7 +77,7 @@ function RenderScreen(currentScreenObj,
         ---
         function drawStatusBorder(statusCode, layers, layout)
             -- draw two boxes, one inside the other
-            rounding_px = 9
+            rounding_px = 18
 
             -- status color
             stillNeedDefault = true

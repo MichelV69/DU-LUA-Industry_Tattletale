@@ -11,7 +11,7 @@ function UpdateIndustry(table_IndustryList)
 
          aRecord["machineName"]      = table_IndustryList[i].getName()
          local product_id            = status_table.currentProducts[1].id
-         aRecord["product_name"]     = system.getItem(product_id).locDisplayNameWithSize
+         aRecord["product_name"]     = AbbreviateName(system.getItem(product_id).locDisplayNameWithSize)
          aRecord["product_iconPath"] = system.getItem(product_id).iconPath
          aRecord["status_code"]      = status_table.state
          aRecord["otherComments"]    = "---"
@@ -53,16 +53,40 @@ function UpdateScreens(lcl_ScreenList, lcl_IndustryStatusData)
          lcl_IndustryStatusData[i].product_iconPath
       )
    end
-end --- function
+end --- function    
 
+---
 function TimeLeftToHuman(timeInSeconds)
-   local floor = math.floor()
-   local format = string.format()
-   local days = floor(time / 86400)
-   local hours = floor(mod(time, 86400) / 3600)
-   local minutes = floor(mod(time, 3600) / 60)
-   local seconds = floor(mod(time, 60))
-   return format("%d:%02d:%02d:%02d", days, hours, minutes, seconds)
+   local inPlainEnglish = ""
+   local days = math.floor(timeInSeconds / 86400)
+   local hours = math.floor(math.fmod(timeInSeconds, 86400) / 3600)
+   local minutes = math.floor(math.fmod(timeInSeconds, 3600) / 60)
+   local seconds = math.floor(math.fmod(timeInSeconds, 60))
+
+   if days > 0 then
+      inPlainEnglish = inPlainEnglish ..  string.format("%dd ", days)
+   end
+   if hours > 0 then
+      inPlainEnglish = inPlainEnglish ..  string.format("%02dh ", hours)
+   end
+
+   if minutes > 0 
+   and days == 0 
+   and hours == 0 then
+      inPlainEnglish = inPlainEnglish ..  string.format("%02dm ", minutes)
+
+      if minutes < 15 then
+         inPlainEnglish = inPlainEnglish ..  string.format("%02ds ", seconds)
+      end
+   end
+
+   return inPlainEnglish
+end
+
+---
+function AbbreviateName(long_name_string)
+   return long_name_string:gsub('Uncommon', 'UNC'):gsub('Advanced', 'ADV')
 end
 
 --- eof ---
+

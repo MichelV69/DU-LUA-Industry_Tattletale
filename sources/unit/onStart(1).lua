@@ -3,7 +3,7 @@ WS2_Software = {}
 WS2_Software.id = "industry_tattletale"
 WS2_Software.title = "Industry Tattletale"
 WS2_Software.version = "1.0.8"
-WS2_Software.revision = "15 feb 2023 20h20 AST"
+WS2_Software.revision = "15 feb 2023 20h58 AST"
 WS2_Software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -16,8 +16,8 @@ PrecisionValue           = 10 ^ PrecisionDigits
 GramsToKG                = 1000
 Minutes                  = {}
 Minutes[1]               = 60
-Minutes[2]               = minutes[1] * 2
-Minutes[5]               = minutes[1] * 5
+Minutes[2]               = Minutes[1] * 2
+Minutes[5]               = Minutes[1] * 5
 
 ScreenPulseTable         = {}
 ScreenPulseTable[1]      = "[-=+     ]"
