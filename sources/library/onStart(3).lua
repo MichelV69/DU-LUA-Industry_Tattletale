@@ -1,7 +1,7 @@
 -- library.onStart(3)
 -- define screen layout for use elsewhere
 ---
-function renderScreen(currentScreenObj, 
+function RenderScreen(currentScreenObj, 
         machineName, productName, otherComments, statusCode, product_iconPath)
     local ScreenTable = {}
     local configOptions = {}
@@ -23,10 +23,10 @@ function renderScreen(currentScreenObj,
     ScreenTable[1]=[[
         local FontName=]] .. FontName ..[[
         local FontSize=]] .. FontSize ..[[
-        local S_Title="]] .. wss_software.title ..[["
-        local S_Version="]] .. wss_software.version ..[["
-        local S_Revision="]] .. wss_software.revision ..[["
-        local timeStamp="]] .. epochTime() ..[[" 
+        local S_Title="]] .. WS2_Software.title ..[["
+        local S_Version="]] .. WS2_Software.version ..[["
+        local S_Revision="]] .. WS2_Software.revision ..[["
+        local timeStamp="]] .. EpochTime() ..[[" 
         local notDeadYet="]] ..screenPulseTick() .. [["
         ]]
 

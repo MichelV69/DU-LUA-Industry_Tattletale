@@ -1,7 +1,7 @@
 -- library.onStart(4)
 --[[ TimeScript by Jericho (github.com/Jericho1060) ]]
 --[[ snagged from LocuraDU (https://github.com/LocuraDU) ]]
-function epochTime()
+function EpochTime()
     local t = system.getUtcTime()
      if not utc then t = t + system.getUtcOffset() end
      local DSEC=24*60*60

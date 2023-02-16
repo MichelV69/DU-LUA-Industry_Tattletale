@@ -1,7 +1,7 @@
 --- onTimer(industry_tattletale)
 --- launch every 0.5 seconds
-unit.stopTimer(wss_software.id)
-industryStatusData = UpdateIndustry(industryList)
-UpdateScreens(screenList, industryStatusData)
-unit.setTimer(wss_software.id, 0.5)
+unit.stopTimer(WS2_Software.id)
+IndustryStatusData = UpdateIndustry(IndustryList)
+UpdateScreens(ScreenList, IndustryStatusData)
+unit.setTimer(WS2_Software.id, 0.5)
 --- eof --- 

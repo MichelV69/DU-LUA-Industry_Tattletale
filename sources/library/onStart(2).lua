@@ -46,7 +46,7 @@ function UpdateIndustry(table_IndustryList)
 function UpdateScreens(lcl_ScreenList, lcl_IndustryStatusData)
  
   for i = 1, #lcl_ScreenList, 1 do
-        renderScreen(
+        RenderScreen(
             lcl_ScreenList[i], 
             lcl_IndustryStatusData[i].machineName, 
             lcl_IndustryStatusData[i].product_name,
