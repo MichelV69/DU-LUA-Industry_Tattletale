@@ -15,7 +15,7 @@ Provide at-a-glance information about the status of running machinery in small i
 ## Installation
 
  1. Install Programming Board XS (PB-Controller) somewhere easy to maintain
- 1. Copy LUA code via `right-click -> Advanced` to the board
+ 1. Copy contents of `release_v1_0_8.lua.json` via `right-click -> Advanced` to the board
  1. Enter Build Mode
  1. Place one to five screens where-ever makes sense for you to monitor the machine status.
  1. Connect Screens and Industry
