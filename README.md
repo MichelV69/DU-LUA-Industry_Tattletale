@@ -21,7 +21,8 @@ Provide at-a-glance information about the status of running machinery in small i
  1. Connect Screens and Industry
     1. Use the `Link Tool`, and then `right-click -> Link from` and select the first screen slot, and connect to the first screen.
     1. Use the `Link Tool`, and then `right-click -> Link from` and select the first industry slot, and connect to the first industry you wish to monitor
-    1. Repeat as required for up to four more Screen / Industry pairs
+    1. Repeat as you require for up to five more Screen / Industry pairs.
+        1. The App does not require any more than one Screen / Industry pair to function.  It will support up to five per PB.
 
 ## Recommendations
 

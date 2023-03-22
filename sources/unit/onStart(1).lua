@@ -2,8 +2,8 @@
 WS2_Software = {}
 WS2_Software.id = "industry_tattletale"
 WS2_Software.title = "Industry Tattletale"
-WS2_Software.version = "1.0.8"
-WS2_Software.revision = "15 feb 2023 20h58 AST"
+WS2_Software.version = "1.0.9"
+WS2_Software.revision = "23 Mar 2023 10h57 AST"
 WS2_Software.author = "Michel Vaillancourt <902pe_gaming@wolfstar.ca>"
 
 system.print("\n --------------- \n")
@@ -43,8 +43,8 @@ FontName                 = [["]] .. lclFontName .. [["]]
 FontSize                 = 32 --export
 
 ---
-local possibleScreens    = { Screen1, Screen2, Screen3, Screen4 }
-local possibleIndustries = { Industry1, Industry2, Industry3, Industry4 }
+local possibleScreens    = { Screen1, Screen2, Screen3, Screen4, Screen5 }
+local possibleIndustries = { Industry1, Industry2, Industry3, Industry4, Industry5 }
 ScreenList               = {}
 IndustryList             = {}
 IndustryStatusData       = {}
